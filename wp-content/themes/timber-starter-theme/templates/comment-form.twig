@@ -1,0 +1,42 @@
+<div class="post-comment">
+    <h3> add comment </h3>
+
+    <form id="form" class="form-horizontal" method="post" action="{{ site.url~'/wp-comments-post.php' }}" role="form">
+        {% if  user %}
+            <input type="hidden" name="email" value="{{ user.email }}">
+            <input type="hidden" name="author" value="{{ user.name }}">
+            <input type="hidden" name="url" value="{{ user.link }}">
+        {% else %}
+            <div class="form-group required">
+                <div class="col-lg-12">
+                    <label for="email" class="control-label">Email</label>
+                    <input class="form-control" required name="email" type="text" id="email" placeholder="Email"/>
+                </div>
+
+                <div class="col-lg-12">
+                    <label for="author" class="control-label">Tên</label>
+                    <input class="form-control" required name="author" type="text" id="author" placeholder="Tên"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <label for="url" class="control-label">URL</label>
+                    <input class="form-control" name="url" id="url" type="text" placeholder="URL"/>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <div class="col-lg-12">
+                <textarea class="form-control" placeholder="comment text" name="comment" rows="8" id="comment"></textarea>
+            </div>
+        </div>
+
+        <input name="comment_post_ID" value="{{ post.id }}" id="comment_post_ID" type="hidden">
+        <input name="comment_parent" id="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
+
+        <div>
+            <button class="btn btn-send" type="submit" name="Submit"> Comment</button>
+        </div>
+    </form>
+</div>

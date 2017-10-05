@@ -1,0 +1,66 @@
+{% extends "base.twig" %}
+
+{% block title %}
+    <section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        {% if post.post_type == "cong-van-den" %}
+                            <h2>Công văn đến</h2>
+                        {% else %}
+                            <h2>{{ post.post_type }}</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#Page header-->
+{% endblock %}
+
+{% block content %}
+    <section id="blog-full-width">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    {{ function('get_sidebar') }}
+                </div>
+                <div class="col-md-8">
+                    <article class="wow fadeInDown post-type-{{ post.post_type }}" data-wow-delay=".3s"
+                             data-wow-duration="500ms" id="post-{{ post.ID }}">
+                        <div class="blog-content">
+                            <h2 class="blogpost-title">{{ post.title }}</h2>
+                            <div class="blog-meta">
+                                <span>By</span>
+                                <a href="{{ post.author.path }}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
+                            </div>
+                            <div>
+                                {{ post.content }}
+                            </div>
+                        </div>
+
+                        <!-- comment box -->
+                        <section class="comment-box">
+                            <!-- comments -->
+                            <div class="comments">
+                                {% if post.comments %}
+                                    <h3> comments </h3>
+                                    {% for cmt in post.comments %}
+                                        {% include "comment.twig" with {comment:cmt} %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            {% if post.comment_status == "closed" %}
+                                <p> comments for this post are closed </p>
+                            {% else %}
+                                <!-- comment form -->
+                                {% include "comment-form.twig" %}
+                            {% endif %}
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

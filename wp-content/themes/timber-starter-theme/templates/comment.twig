@@ -1,0 +1,19 @@
+<div class="comments {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
+	<div class="media">
+        <div class="media-body">
+            <h4 class="media-header">{{comment.author.name}} says</h4>
+            <div class="comment-content">{{comment.comment_content|wpautop}}</div>
+
+            <section class="comment-box">
+                <!-- child comments -->
+                {% if post.comments %}
+                    <h4> replies </h4>
+                        {% for cmt in comment.children %}
+                            {% include "comment.twig" with {comment:cmt} %}
+                        {% endfor %}
+                {% endif %}
+
+            </section>
+        </div>
+    </div>
+</div>

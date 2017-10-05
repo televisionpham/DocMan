@@ -1,0 +1,18 @@
+/*
+ * Theme Name: My Timber Starter Theme
+ * Description: Starter Theme to use with Timber
+ * Author: Upstatement and YOU!
+*/
+.form-group.required .control-label:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:7px;
+}
+
+body{margin-top:50px;}
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }

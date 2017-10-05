@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            {% block side_bar %}
+                {{ function('get_sidebar') }}
+            {% endblock %}
+        </div>
+        <div class="col-md-8">
+            <div>
+                {% block posts_content %}
+                    {% for post in posts %}
+                        {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+                    {% endfor %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
