@@ -1,0 +1,133 @@
+<p>Mã đăng ký: {{post.ma_dang_ky}}<br/>
+Độ khẩn: {{post.do_khan}}<br/>
+Độ mật: {{post.do_mat}}<br/>
+Tình trạng xử lý: {{post.tinh_trang_xu_ly}}</p>
+<h4>1. Trích ngang</h4>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Số ký hiệu: {{post.so_van_ban}}/{{post.ky_hieu}}</p>
+    </div>
+    <div class="col-lg-6">
+        <p>Ngày đăng ký: {{ post.ngay_dang_ky }} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Ngày văn bản: {{ post.ngay_van_ban }}</p>
+    </div>
+    <div class="col-lg-6">
+        <p>Thể loại văn bản: {{ post.the_loai_van_ban }} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Người ký: {{ post.nguoi_ky }}</p>
+    </div>
+    <div class="col-lg-6">
+        <p>Loại bản: {{ post.loai_ban }} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Số bản: {{ post.so_ban }}</p>
+    </div>
+    <div class="col-lg-6">
+        <p>Tác giả văn bản: {{ post.tac_gia_van_ban }} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Số trang: {{ post.so_trang }}</p>
+    </div>
+    <div class="col-lg-6">
+        <p>Chuyên đề: {{ post.chuyen_de }} </p>
+    </div>
+</div>
+<p>
+    <b>Trích yếu:</b><br/>
+    {{ post.trich_yeu }}
+</p>
+<h4>2. Toàn văn nội dung văn bản</h4>
+<p><a href="{{post.toan_van}}">{{post.so_van_ban}}/{{post.ky_hieu}}</a></p>
+<h4>3. Chuyển xử lý và yêu cầu xử lý</h4>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Chủ trì xử lý:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.chu_tri_xu_ly }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Phối hợp xử lý:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.phoi_hop_xu_ly }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Hạn giải quyết xong:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.han_giai_quyet_xong }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Hạn thu hồi:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.han_thu_hoi }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Nội dung yêu cầu xử lý:</p>
+    </div>
+    <div class="col-lg-6">
+        {{ post.noi_dung_yeu_cau_xu_ly }}
+    </div>
+</div>
+<h4>4. Lưu trữ</h4>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Phông lưu trữ số:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.phong_luu_tru_so }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Mục lục hồ sơ số:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.muc_luc_ho_so_so }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Thời hạn bảo quản:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.thoi_han_bao_quan }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Ngày lưu hồ sơ:</p>
+            </div>
+            <div class="col-lg-6">
+                {{ post.ngay_luu_ho_so }}
+            </div>
+        </div>
+    </div>
+</div>

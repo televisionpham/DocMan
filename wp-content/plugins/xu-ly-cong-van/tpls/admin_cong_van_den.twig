@@ -1,0 +1,245 @@
+<div class="form-wrap">
+    <table width="100%">
+        <tr>
+            <td width="50%">
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_ma_dang_ky">{{ ma_dang_ky.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_ma_dang_ky"
+                           id="cong_van_den_custom_content_ma_dang_ky"
+                           value="{{ ma_dang_ky.value }}">
+                </div>
+            </td>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_do_khan">{{ do_khan.title }}</label>
+                    <select name="cong_van_den_custom_content_do_khan" id="cong_van_den_custom_content_do_khan">
+                        {% for item in do_khan.options %}
+                            {% if  loop.index0  == do_khan.value %}
+                                <option value="{{ loop.index }}" selected="selected">{{ item }}</option>
+                            {% else %}
+                                <option value="{{ loop.index }}">{{ item }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_tinh_trang_xu_ly">{{ tinh_trang_xu_ly.title }}</label>
+                    <select name="cong_van_den_custom_content_tinh_trang_xu_ly"
+                            id="cong_van_den_custom_content_tinh_trang_xu_ly">
+                        {% for item in tinh_trang_xu_ly.options %}
+                            {% if  loop.index0 ==  tinh_trang_xu_ly.value %}
+                                <option value="{{ loop.index0 }}" selected="selected">{{ item }}</option>
+                            {% else %}
+                                <option value="{{ loop.index0 }}">{{ item }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_do_mat">{{ do_mat.title }}</label>
+                    <select name="cong_van_den_custom_content_do_mat" id="cong_van_den_custom_content_do_mat">
+                        {% for item in do_mat.options %}
+                            {% if  loop.index0 == do_mat.value %}
+                                <option value="{{ loop.index0 }}" selected="selected">{{ item }}</option>
+                            {% else %}
+                                <option value="{{ loop.index0 }}">{{ item }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <h3>1. Trích ngang</h3>
+    <table width="100%">
+        <tr>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_so_van_ban">{{ so_van_ban.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_so_van_ban"
+                           id="cong_van_den_custom_content_so_van_ban" value="{{ so_van_ban.value }}">
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label for="cong_van_den_custom_content_ngay_dang_ky">{{ ngay_dang_ky.title }} &#128197;</label>
+                    <input size="20" class="datepicker" type="text" name="cong_van_den_custom_content_ngay_dang_ky"
+                           id="cong_van_den_custom_content_ngay_dang_ky" value="{{ ngay_dang_ky.value }}"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_ky_hieu">{{ ky_hieu.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_ky_hieu"
+                           id="cong_van_den_custom_content_ky_hieu" value="{{ ky_hieu.value }}"/>
+                </div>
+            </td>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_the_loai_van_ban">{{ the_loai_van_ban.title }}</label>
+                    <select name="cong_van_den_custom_content_the_loai_van_ban"
+                            id="cong_van_den_custom_content_the_loai_van_ban">
+                        {% for item in the_loai_van_ban.options %}
+                            {% if  item == the_loai_van_ban.value %}
+                                <option value="{{ item }}" selected="selected">{{ item }}</option>
+                            {% else %}
+                                <option value="{{ item }}">{{ item }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <label for="cong_van_den_custom_content_ngay_van_ban">{{ ngay_van_ban.title }} &#128197;</label>
+                    <input type="text" class="datepicker" name="cong_van_den_custom_content_ngay_van_ban" size="20"
+                           id="cong_van_den_custom_content_ngay_van_ban" value="{{ ngay_van_ban.value }}"/>
+                </div>
+            </td>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_loai_ban">{{ loai_ban.title }}</label>
+                    <select name="cong_van_den_custom_content_loai_ban" id="cong_van_den_custom_content_loai_ban">
+                        {% for item in loai_ban.options %}
+                            {% if  item == loai_ban.value %}
+                                <option value="{{ item }}" selected="selected">{{ item }}</option>
+                            {% else %}
+                                <option value="{{ item }}">{{ item }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_nguoi_ky">{{ nguoi_ky.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_nguoi_ky"
+                           id="cong_van_den_custom_content_nguoi_ky" value="{{ nguoi_ky.value }}"/>
+                </div>
+            </td>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_tac_gia_van_ban">{{ tac_gia_van_ban.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_tac_gia_van_ban"
+                           id="cong_van_den_custom_content_tac_gia_van_ban" value="{{ tac_gia_van_ban.value }}"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_so_trang">{{ so_trang.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_so_trang"
+                           id="cong_van_den_custom_content_so_trang" value="{{ so_trang.value }}"/>
+                </div>
+            </td>
+            <td>
+                <div class="form-field">
+                    <label for="cong_van_den_custom_content_so_ban">{{ so_ban.title }}</label>
+                    <input type="text" name="cong_van_den_custom_content_so_ban"
+                           id="cong_van_den_custom_content_so_ban" value="{{ so_ban.value }}"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_chuyen_de">{{ chuyen_de.title }}</label>
+        <input type="text" name="cong_van_den_custom_content_chuyen_de"
+               id="cong_van_den_custom_content_chuyen_de" value="{{ chuyen_de.value }}"/>
+    </div>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_trich_yeu">{{ trich_yeu.title }}</label>
+        <textarea type="text" name="cong_van_den_custom_content_trich_yeu" columns="30" rows="3"
+                  id="cong_van_den_custom_content_trich_yeu">{{ trich_yeu.value }}</textarea>
+    </div>
+
+    <h3>2. Toàn văn nội dung văn bản</h3>
+
+    <h3>3. Chuyển xử lý và yêu cầu xử lý</h3>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_chu_tri_xu_ly">{{ chu_tri_xu_ly.title }}</label>
+        <select name="cong_van_den_custom_content_chu_tri_xu_ly"
+                id="cong_van_den_custom_content_chu_tri_xu_ly">
+            {% for key,val in chu_tri_xu_ly.options %}
+                {% if  key == chu_tri_xu_ly.value %}
+                    <option value="{{ key }}" selected="selected">{{ val }}</option>
+                {% else %}
+                    <option value="{{ key }}">{{ val }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_phoi_hop_xu_ly">{{ chu_tri_xu_ly.title }}</label>
+        <select name="cong_van_den_custom_content_phoi_hop_xu_ly"
+                id="cong_van_den_custom_content_phoi_hop_xu_ly">
+            {% for key,val in phoi_hop_xu_ly.options %}
+                {% if  key == phoi_hop_xu_ly.value %}
+                    <option value="{{ key }}" selected="selected">{{ val }}</option>
+                {% else %}
+                    <option value="{{ key }}">{{ val }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="cong_van_den_custom_content_han_giai_quyet_xong">{{ han_giai_quyet_xong.title }} &#128197;</label>
+        <input type="text" class="datepicker" name="cong_van_den_custom_content_han_giai_quyet_xong" size="20"
+               id="cong_van_den_custom_content_han_giai_quyet_xong" value="{{ han_giai_quyet_xong.value }}"/>
+    </div>
+    <div>
+        <label for="cong_van_den_custom_content_han_thu_hoi">{{ han_thu_hoi.title }} &#128197;</label>
+        <input type="text" size="20" class="datepicker" name="cong_van_den_custom_content_han_thu_hoi" size="20"
+               id="cong_van_den_custom_content_han_thu_hoi" value="{{ han_thu_hoi.value }}"/>
+    </div>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_noi_dung_yeu_cau_xu_ly">{{ noi_dung_yeu_cau_xu_ly.title }}</label>
+        <textarea type="text" name="cong_van_den_custom_content_noi_dung_yeu_cau_xu_ly" columns="30" rows="3"
+                  id="cong_van_den_custom_content_noi_dung_yeu_cau_xu_ly">{{ noi_dung_yeu_cau_xu_ly.value }}</textarea>
+    </div>
+    <h3>4. Lưu trữ</h3>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_phong_luu_tru_so">{{ phong_luu_tru_so.title }}</label>
+        <input type="text" name="cong_van_den_custom_content_phong_luu_tru_so"
+               id="cong_van_den_custom_content_phong_luu_tru_so" value="{{ phong_luu_tru_so.value }}"/>
+    </div>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_muc_luc_ho_so_so">{{ muc_luc_ho_so_so.title }}</label>
+        <input type="text" name="cong_van_den_custom_content_muc_luc_ho_so_so"
+               id="cong_van_den_custom_content_muc_luc_ho_so_so" value="{{ muc_luc_ho_so_so.value }}"/>
+    </div>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_luu_ho_so_so">{{ luu_ho_so_so.title }}</label>
+        <input type="text" name="cong_van_den_custom_content_luu_ho_so_so"
+               id="cong_van_den_custom_content_luu_ho_so_so" value="{{ luu_ho_so_so.value }}"/>
+    </div>
+    <div class="form-field">
+        <label for="cong_van_den_custom_content_thoi_han_bao_quan">{{ thoi_han_bao_quan.title }}</label>
+        <select name="cong_van_den_custom_content_thoi_han_bao_quan" id="cong_van_den_custom_content_thoi_han_bao_quan">
+            {% for item in thoi_han_bao_quan.options %}
+                {% if  loop.index0 == thoi_han_bao_quan.value %}
+                    <option value="{{ loop.index0 }}" selected="selected">{{ item }}</option>
+                {% else %}
+                    <option value="{{ loop.index0 }}">{{ item }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="cong_van_den_custom_content_ngay_luu_ho_so">{{ ngay_luu_ho_so.title }} &#128197;</label>
+        <input type="text" class="datepicker" name="cong_van_den_custom_content_ngay_luu_ho_so" size="20"
+               id="cong_van_den_custom_content_ngay_luu_ho_so" value="{{ ngay_luu_ho_so.value }}"/>
+    </div>
+</div>

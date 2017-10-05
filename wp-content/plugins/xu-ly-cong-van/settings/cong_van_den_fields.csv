@@ -1,0 +1,27 @@
+do_khan;Độ khẩn;dropdown
+do_mat;Độ mật;dropdown
+ma_dang_ky;Mã đăng ký;text
+tinh_trang_xu_ly;Tình trạng xử lý;dropdown
+so_van_ban;Số văn bản;text
+ky_hieu;Ký hiệu;text;
+ngay_dang_ky;Ngày đăng ký;date
+the_loai_van_ban;Thể loại văn bản;dropdown
+ngay_van_ban;Ngày văn bản;date
+loai_ban;Loại bản;dropdown
+nguoi_ky;Người ký;text
+tac_gia_van_ban;Tác giả văn bản;text
+so_trang;Số trang;text
+so_ban;Số bản;text
+chuyen_de;Chuyên đề;text
+trich_yeu;Trích yếu;textarea
+toan_van;Tệp đính kèm;uploader
+chu_tri_xu_ly;Chủ trì xử lý;lanh_dao
+phoi_hop_xu_ly;Phối hợp xử lý;lanh_dao
+han_giai_quyet_xong;Hạn giải quyết xong;date
+han_thu_hoi;Hạn thu hồi;date
+noi_dung_yeu_cau_xu_ly;Nội dung yêu cầu xử lý;textarea
+phong_luu_tru_so;Phông lưu trữ số;text
+muc_luc_ho_so_so;Mục lục hồ sơ số;text
+luu_ho_so_so;Lưu hồ sơ số;text
+thoi_han_bao_quan;Thời hạn bảo quản;dropdown
+ngay_luu_ho_so;Ngày lưu hồ sơ;date
