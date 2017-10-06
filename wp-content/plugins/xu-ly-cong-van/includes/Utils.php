@@ -20,8 +20,14 @@ class Utils
         if (!is_admin()) {
             return;
         }
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('thickbox');
         wp_enqueue_script('docman-admin-cong_van', plugins_url('js/admin-cong-van.js', dirname(__FILE__)), array('jquery',  'jquery-ui-datepicker'), '170908');
         wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
+    }
+
+    public static function admin_enqueue_styles() {
+        wp_enqueue_style('thickbox');
     }
     
     public static function namespace_add_custom_types($query) {

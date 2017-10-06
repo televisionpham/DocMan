@@ -20,6 +20,7 @@ add_action('init', 'CongVanDen::register_my_post_type');
 add_action('admin_menu','CongVanDenCustomContent::create_meta_box');
 add_action('save_post', 'CongVanDenCustomContent::save_custom_fields', 1, 2);
 add_action('admin_enqueue_scripts', 'Utils::admin_enqueue_scripts');
+add_action('admin_print_styles', 'Utils::admin_enqueue_styles');
 add_action('post_edit_form_tag', 'CongVanCustomContent::update_edit_form');
 add_filter( 'pre_get_posts', 'Utils::namespace_add_custom_types' );
 

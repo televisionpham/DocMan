@@ -20,12 +20,12 @@
 
 {% block content %}
     <section id="blog-full-width">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     {{ function('get_sidebar') }}
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <article class="wow fadeInDown post-type-{{ post.post_type }}" data-wow-delay=".3s"
                              data-wow-duration="500ms" id="post-{{ post.ID }}">
                         <div class="blog-content">

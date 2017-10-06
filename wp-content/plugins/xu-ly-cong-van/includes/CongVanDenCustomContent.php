@@ -25,22 +25,19 @@ class CongVanDenCustomContent
         );
     }
 
-    public static function print_custom_fields($post, $callback_args='') {
+    public static function print_custom_fields($post, $callback_args='') {               
         $tpl = file_get_contents(dirname(dirname(__FILE__)).'/tpls/admin_cong_van_den.twig');
         $custom_fields = self::get_custom_fields();
         foreach ($custom_fields as &$field) {
-            $field_name = $field['name'];
-            if ($field_name === CongVanCustomContent::FIELD_TOAN_VAN) {
-                $toan_van = get_post_meta($post->ID, $field_name, true);
-                if (!empty($toan_van)) {
-                    $field['value'] = $toan_van['url'];
-                    $field['has_file'] = true;
-                }
-            }
+            $field_name = $field['name'];            
             if (empty($field['value'])) {
-                $field['value'] = htmlspecialchars(get_post_meta($post->ID, $field['name'], true));
-            }
-        }
+                if ($field_name == 'toan_van') {
+                    $field['value'] = get_post_meta($post->ID, $field['name'], true);                    
+                } else {
+                    $field['value'] = htmlspecialchars(get_post_meta($post->ID, $field['name'], true));
+                }
+            }            
+        }                
         $output = Timber::compile_string($tpl, $custom_fields);
         print '<div class="form-wrap">';
         wp_nonce_field(self::NONCE_ACTION, self::NONCE_NAME);
@@ -48,54 +45,49 @@ class CongVanDenCustomContent
         print '</div>';
     }
 
-    public static function save_custom_fields($post_id, $post) {
+    public static function save_custom_fields($post_id, $post) {        
         if (!empty($_POST) && check_admin_referer(self::NONCE_ACTION, self::NONCE_NAME)) {
             if ($post->post_type != CongVanDen::POST_TYPE) {
                 return;
             }
-            $cong_van_den = new CongVanDen();
-
-            if(!empty($_FILES[self::PREFIX.CongVanCustomContent::FIELD_TOAN_VAN]['name'])) {
-                $supported_types = array('application/pdf');
-                $arr_file_type = wp_check_filetype(basename($_FILES[self::PREFIX.'toan_van']['name']));
-                $uploaded_type = $arr_file_type['type'];
-                if (in_array($uploaded_type, $supported_types)) {
-                    $upload = wp_upload_bits($_FILES[self::PREFIX.CongVanCustomContent::FIELD_TOAN_VAN]['name'],
-                        null,
-                        file_get_contents($_FILES[self::PREFIX.CongVanCustomContent::FIELD_TOAN_VAN]['tmp_name']));
-                    if(isset($upload['error']) && $upload['error'] != 0) {
-                        wp_die('There was an error uploading your file. The error is: ' . $upload['error']);
-                    } else {
-                        add_post_meta($post_id, CongVanCustomContent::FIELD_TOAN_VAN, $upload);
-                        update_post_meta($post_id, CongVanCustomContent::FIELD_TOAN_VAN, $upload);
-                        $cong_van_den->set_toan_van($upload);
-                    }
-                }
-            }
+            $cong_van_den = new CongVanDen();            
             $custom_fields = self::get_custom_fields();
-            foreach ($custom_fields as $field) {
-                if ($field['name'] == CongVanCustomContent::FIELD_TOAN_VAN) {
-                    continue;
-                }
+            foreach ($custom_fields as $field) {                
                 if ( isset( $_POST[ self::PREFIX . $field['name'] ] ) )
-				{
+				{                    
 					$value = trim($_POST[ self::PREFIX . $field['name'] ]);
 					// Auto-paragraphs for any WYSIWYG
 					if ( $field['type'] == 'wysiwyg' )
 					{
 						$value = wpautop( $value );
-					}
+                    }                    
                     $set_method = 'set_'.$field['name'];
                     $cong_van_den->$set_method($value);
 					update_post_meta( $post_id, $field[ 'name' ], $value );
-				}
-				// if not set, then it's an unchecked checkbox, so blank out the value.
+				}				
 				else
 				{
 					update_post_meta( $post_id, $field[ 'name' ], '' );
-				}
-            }
-
+                }
+                // Tệp đính kèm                
+                $urls = array();
+                if ($field['name'] == 'toan_van') {
+                    for ($i = 0; $i < 10; $i++) {
+                        $name = self::PREFIX. $field['name'].'_'.$i;                        
+                        if (isset($_POST[$name])) {
+                            $url = str_replace("\'", '"', $_POST[$name]); 
+                            preg_match('/href=(["\'])([^\1]*)\1/i', $url, $m);     
+                            var_dump($m);
+                            die;
+                            $urls[] = $m[2];
+                        }
+                    }
+                    $cong_van_den->set_toan_van($urls);
+                    update_post_meta( $post_id, $field[ 'name' ], $urls );
+                }
+            }        
+            
+            // Đưa post vào category Công văn đến
             remove_action('save_post', 'CongVanDenCustomContent::save_custom_fields', 1, 2);
             $content = $cong_van_den->generate_content();
             $my_post = array(

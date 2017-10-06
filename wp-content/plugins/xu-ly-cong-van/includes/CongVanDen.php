@@ -31,12 +31,20 @@ class CongVanDen extends CongVanBase
         $custom_fields = CongVanDenCustomContent::get_custom_fields();
         $data = array();
         foreach ($custom_fields as $field) {
-            $get_method = 'get_'.$field['name'];
-            $data[$field['name']] = $this->$get_method();
-            if ($field['name'] == CongVanCustomContent::FIELD_TOAN_VAN) {
-                $data[$field['name']] = $this->get_toan_van()['url'];
+            $get_method = 'get_'.$field['name'];            
+            if ($field['name'] == 'toan_van') {
+                $arr_toan_van = $this->$get_method();   
+                $toan_van = '<div>';
+                foreach ($arr_toan_van as $tv) {                    
+                    $url = '<div><a href='.$tv.'>'.$this->get_so_van_ban().'/'.$this->get_ky_hieu().'</a></div>';
+                    $toan_van .= $url;                    
+                }                
+                $toan_van .= '</div>';
+                $data['toan_van'] = $toan_van;
+            } else {
+                $data[$field['name']] = $this->$get_method(); 
             }
-        }
+        }                
         $context = Timber::get_context();
         $context['post'] = $data;
         $content = Timber::compile(array($tpl), $context);

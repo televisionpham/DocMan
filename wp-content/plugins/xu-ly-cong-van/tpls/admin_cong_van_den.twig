@@ -166,7 +166,17 @@
     </div>
 
     <h3>2. Toàn văn nội dung văn bản</h3>
-
+    <div class="row" id="attachments" name="attachments">                    
+        <input class="button" id="cong_van_upload_file_button" type="button" value="Upload File" />
+        {% for attachment in toan_van.value %}
+            <div>                
+                <label for="cong_van_den_custom_content_toan_van_{{ loop.index0 }}">
+                    <a href="{{ attachment }}">{{ so_van_ban.value }}/{{ ky_hieu.value }}</a>
+                </label>
+                <input type="hidden" name="cong_van_den_custom_content_toan_van_{{ loop.index0 }}" id="cong_van_den_custom_content_toan_van_{{ loop.index0 }}" value="{{ attachment }}"/>
+            </div>
+        {% endfor %}
+    </div>
     <h3>3. Chuyển xử lý và yêu cầu xử lý</h3>
     <div class="form-field">
         <label for="cong_van_den_custom_content_chu_tri_xu_ly">{{ chu_tri_xu_ly.title }}</label>
