@@ -33,13 +33,13 @@ class CongVanDen extends CongVanBase
         foreach ($custom_fields as $field) {
             $get_method = 'get_'.$field['name'];            
             if ($field['name'] == 'toan_van') {
-                $arr_toan_van = $this->$get_method();   
+                $arr_toan_van = $this->$get_method();                    
                 $toan_van = '<div>';
                 foreach ($arr_toan_van as $tv) {                    
                     $url = '<div><a href='.$tv.'>'.$this->get_so_van_ban().'/'.$this->get_ky_hieu().'</a></div>';
                     $toan_van .= $url;                    
                 }                
-                $toan_van .= '</div>';
+                $toan_van .= '</div>';                
                 $data['toan_van'] = $toan_van;
             } else {
                 $data[$field['name']] = $this->$get_method(); 

@@ -32,7 +32,7 @@ class CongVanDenCustomContent
             $field_name = $field['name'];            
             if (empty($field['value'])) {
                 if ($field_name == 'toan_van') {
-                    $field['value'] = get_post_meta($post->ID, $field['name'], true);                    
+                    $field['value'] = get_post_meta($post->ID, $field['name'], true);                            
                 } else {
                     $field['value'] = htmlspecialchars(get_post_meta($post->ID, $field['name'], true));
                 }
@@ -74,14 +74,22 @@ class CongVanDenCustomContent
                 if ($field['name'] == 'toan_van') {
                     for ($i = 0; $i < 10; $i++) {
                         $name = self::PREFIX. $field['name'].'_'.$i;                        
-                        if (isset($_POST[$name])) {
-                            $url = str_replace("\'", '"', $_POST[$name]); 
-                            preg_match('/href=(["\'])([^\1]*)\1/i', $url, $m);     
-                            var_dump($m);
-                            die;
-                            $urls[] = $m[2];
+                        if (isset($_POST[$name])) {                            
+                            $url = str_replace("\'", '', $_POST[$name]);                                 
+                            $dom = new DOMDocument();
+                            $dom->loadHTML($url);
+                            $xpath = new DOMXPath($dom);
+                            $nodes = $xpath->query('//a/@href');                            
+                            if ($nodes->length > 0)
+                            {
+                                foreach($nodes as $href) {                                
+                                    $urls[] = $href->nodeValue;                               
+                                }
+                            } else {
+                                $urls[] = $url;
+                            }
                         }
-                    }
+                    }                    
                     $cong_van_den->set_toan_van($urls);
                     update_post_meta( $post_id, $field[ 'name' ], $urls );
                 }
@@ -89,7 +97,7 @@ class CongVanDenCustomContent
             
             // Đưa post vào category Công văn đến
             remove_action('save_post', 'CongVanDenCustomContent::save_custom_fields', 1, 2);
-            $content = $cong_van_den->generate_content();
+            $content = $cong_van_den->generate_content();              
             $my_post = array(
                 'ID' => $post->ID,
                 'post_title' => $cong_van_den->get_so_van_ban().'/'.$cong_van_den->get_ky_hieu(),

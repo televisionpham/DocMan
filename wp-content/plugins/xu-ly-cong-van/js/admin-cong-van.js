@@ -17,10 +17,15 @@ jQuery(document).ready(function () {
     window.send_to_editor = function(html) {   
         var count = jQuery('#attachments > div').length;
         var id = 'cong_van_den_custom_content_toan_van_' + count;
-        attachmentElement = '<div><label for="cong_van_den_custom_content_toan_van">' + html +'</label>' +
+        attachmentElement = '<div id="div_' + id +'" name="' + id + '"><label for="cong_van_den_custom_content_toan_van">' + html + '</label>' +
         '<input type="hidden" name="' + id + '" id="' + id +'"/></div>';
         jQuery('#attachments').append(attachmentElement);
         jQuery("#" + id).val(html);
         tb_remove();
     }
 });
+
+function removeAttachment(elmnt) {
+    var divId = '#div_' + elmnt.id.substring(2, elmnt.id.length);
+    jQuery(divId).remove();
+}

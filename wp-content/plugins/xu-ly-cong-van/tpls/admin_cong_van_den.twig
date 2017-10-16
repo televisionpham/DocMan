@@ -166,12 +166,13 @@
     </div>
 
     <h3>2. Toàn văn nội dung văn bản</h3>
-    <div class="row" id="attachments" name="attachments">                    
-        <input class="button" id="cong_van_upload_file_button" type="button" value="Upload File" />
+    <div class="row" id="attachments">
+        <input class="button" id="cong_van_upload_file_button" type="button" value="Upload File" /><br/><br/>
         {% for attachment in toan_van.value %}
-            <div>                
+            <div id="div_cong_van_den_custom_content_toan_van_{{ loop.index0 }}">
                 <label for="cong_van_den_custom_content_toan_van_{{ loop.index0 }}">
                     <a href="{{ attachment }}">{{ so_van_ban.value }}/{{ ky_hieu.value }}</a>
+                    <button class="button button-link-delete" id="a_cong_van_den_custom_content_toan_van_{{ loop.index0 }}" onclick="removeAttachment(this)">Xóa</button>
                 </label>
                 <input type="hidden" name="cong_van_den_custom_content_toan_van_{{ loop.index0 }}" id="cong_van_den_custom_content_toan_van_{{ loop.index0 }}" value="{{ attachment }}"/>
             </div>

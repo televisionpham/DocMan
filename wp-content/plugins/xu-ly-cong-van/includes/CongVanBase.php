@@ -68,8 +68,8 @@ abstract class CongVanBase
     public function set_do_khan($do_khan)
     {
         $options_file = dirname(__DIR__).'/settings/do_khan.csv';
-        $keyValuePair = CongVanCustomContent::get_hash_from_file($options_file);
-        $this->do_khan = $keyValuePair[$do_khan];
+        $keyValuePair = CongVanCustomContent::get_hash_from_file($options_file);                 
+        $this->do_khan = $keyValuePair[$do_khan - 1];
     }
 
     /**
