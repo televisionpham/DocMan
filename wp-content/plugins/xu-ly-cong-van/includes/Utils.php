@@ -41,4 +41,9 @@ class Utils
         }
         return $query;
     }
+
+    public static function getIdFromGuid($guid) {
+        global $wpdb;
+        return $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid=%s", $guid ) );
+    }
 }

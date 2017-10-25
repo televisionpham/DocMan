@@ -50,6 +50,7 @@ class CongVanDenCustomContent
             if ($post->post_type != CongVanDen::POST_TYPE) {
                 return;
             }
+            $toan_van_old_value = get_post_meta($post_id, "toan_van", true);            
             $cong_van_den = new CongVanDen();            
             $custom_fields = self::get_custom_fields();
             foreach ($custom_fields as $field) {                
@@ -69,9 +70,9 @@ class CongVanDenCustomContent
 				{
 					update_post_meta( $post_id, $field[ 'name' ], '' );
                 }
-                // Tệp đính kèm                
-                $urls = array();
+                // Tệp đính kèm                                
                 if ($field['name'] == 'toan_van') {
+                    $urls = array();
                     for ($i = 0; $i < 10; $i++) {
                         $name = self::PREFIX. $field['name'].'_'.$i;                        
                         if (isset($_POST[$name])) {                            
@@ -92,6 +93,19 @@ class CongVanDenCustomContent
                     }                    
                     $cong_van_den->set_toan_van($urls);
                     update_post_meta( $post_id, $field[ 'name' ], $urls );
+                    foreach ($toan_van_old_value as $old_value) {
+                        $found = false;
+                        foreach ($urls as $url) {
+                            if ($url == $old_value) {
+                                $found = true;
+                                break;
+                            }
+                        }
+                        if (!$found) {
+                            $attachment_id = Utils::getIdFromGuid($old_value);
+                            wp_delete_attachment($attachment_id);
+                        }
+                    }
                 }
             }        
             
